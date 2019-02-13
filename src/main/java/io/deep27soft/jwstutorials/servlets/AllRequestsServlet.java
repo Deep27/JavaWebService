@@ -2,7 +2,6 @@ package io.deep27soft.jwstutorials.servlets;
 
 import io.deep27soft.jwstutorials.templater.PageGenerator;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +12,7 @@ import java.util.Map;
 public class AllRequestsServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         Map<String, Object> pageVariables = createPageVariablesMap(req);
         pageVariables.put("message", "");
@@ -25,7 +24,7 @@ public class AllRequestsServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         Map<String, Object> pageVariables = createPageVariablesMap(req);
 
