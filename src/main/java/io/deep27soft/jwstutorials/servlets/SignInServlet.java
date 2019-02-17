@@ -23,17 +23,17 @@ public class SignInServlet extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        resp.setContentType("text/html");
 
         UserProfile profile = accountService.getUserByLogin(login);
-
         if (profile == null || !profile.getPass().equals(password)) {
+            resp.setContentType("text/html;charset=utf-8");
             resp.getWriter().println("Unauthorized");
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
 
-        resp.getWriter().println("Authorized: " + profile);
+        resp.setContentType("text/html;charset=utf-8");
+        resp.getWriter().println("Authorized: " + profile.getLogin());
         resp.setStatus(HttpServletResponse.SC_OK);
     }
 }

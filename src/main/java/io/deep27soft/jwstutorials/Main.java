@@ -1,7 +1,6 @@
 package io.deep27soft.jwstutorials;
 
 import io.deep27soft.jwstutorials.accounts.AccountService;
-import io.deep27soft.jwstutorials.accounts.UserProfile;
 import io.deep27soft.jwstutorials.servlets.SessionsServlet;
 import io.deep27soft.jwstutorials.servlets.SignInServlet;
 import io.deep27soft.jwstutorials.servlets.SignUpServlet;
@@ -18,14 +17,12 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         AccountService accountService = new AccountService();
-        accountService.addNewUser(new UserProfile("admin"));
-        accountService.addNewUser(new UserProfile("test"));
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(new UsersServlet(accountService)), "/api/v1/users");
         context.addServlet(new ServletHolder(new SessionsServlet(accountService)), "/api/v1/sessions");
-        context.addServlet(new ServletHolder(new SignUpServlet(accountService)), "/api/v1/signUp");
-        context.addServlet(new ServletHolder(new SignInServlet(accountService)), "/api/v1/signIn");
+        context.addServlet(new ServletHolder(new SignUpServlet(accountService)), "/signup");
+        context.addServlet(new ServletHolder(new SignInServlet(accountService)), "/signin");
 
         ResourceHandler resourceHandler = new ResourceHandler();
         resourceHandler.setResourceBase("public_html");
